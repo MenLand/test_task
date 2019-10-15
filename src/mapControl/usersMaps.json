@@ -1,0 +1,16 @@
+[
+    {
+        "username": "Misha",
+        "password": "Drik",
+        "cards": [
+            {
+                    “coords” : GPS координаты,
+                    “name” = название объекта
+            },
+            {
+                    “coords” = GPS координаты,
+                    “name” = название объекта
+            },
+        ]
+    }
+]

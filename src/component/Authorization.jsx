@@ -1,39 +1,58 @@
 import React from 'react';
+import Modal from './Modal.jsx'
 
-const Authorization = () => {
+class Authorization extends React.Component {
+    constructor(props) {
+        super(props);
 
-    return (
-        <div className="modal" tabIndex="-1" role="dialog">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">Авторизация</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <div className="input-group flex-nowrap">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="addon-wrapping">🖐</span>
-                            </div>
-                            <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" />
-                        </div>
-                        <div className="input-group flex-nowrap">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="addon-wrapping">&#128273;</span>
-                            </div>
-                            <input type="text" className="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping" />
-                        </div>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Регистрация</button>
-                        <button type="button" className="btn btn-primary">Вход</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+        this.state = {
+            isShow: true,
+            password: '',
+            username: '',
+            users: [
+                {
+                    username: 'Misha',
+                    password: 'Drik',
+                    cards: {
+
+                    }
+                }
+            ],
+            changeUserData: this.changeUserData.bind(this)
+        }
+
+    }
+
+    handleSignUpUser = () => {
+        const { username, password } = this.state;
+        console.log(username)
+        const users = [...this.state.users];
+        users.push({ username, password })
+        this.setState({ users })
+    }
+
+    handleSignInUser = () => {
+        const { username, password } = this.state
+        const isUserExist = this.state.users.find(user => {
+            return user.username === username && user.password === password;
+        })
+
+        if (isUserExist) this.setState({ isShow: false })
+        else this.setState({ isError: true })
+    }
+
+    changeUserData = ({ target: { value, name } }) => {
+        this.setState({ [name]: value });
+    }
+
+    render() {
+        const { isShow } = this.state
+        return (
+            <>
+                {isShow && <Modal {...this.state} signIn={this.handleSignInUser} signUp={this.handleSignUpUser} />}
+            </>
+        )
+    }
 }
 
 export default Authorization;
