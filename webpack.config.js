@@ -1,10 +1,11 @@
 const path = require("path");
+const webpack = require('webpack');
 
 module.exports = {
     entry: "./src/index.js",
     mode: "development",
     output: {
-        filename: "./bundle.js"
+        filename: "./bundle.js",
     },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
@@ -12,7 +13,7 @@ module.exports = {
         port: 9002,
         watchContentBase: true,
         progress: true,
-        overlay: true,
+        overlay: true
     },
 
     module: {
@@ -20,9 +21,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: "babel-loader"
-                }
+                use: ['react-hot-loader/webpack', 'babel-loader']
             },
             {
                 test: /\.scss$/,
@@ -37,5 +36,5 @@ module.exports = {
                 use: ["file-loader"]
             }
         ]
-    }
+    },
 };

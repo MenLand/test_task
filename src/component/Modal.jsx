@@ -7,7 +7,7 @@ class Modal extends Component {
         this.div = document.createElement('div');
     }
 
-    componentDidMount() {
+    componentDidMount() { 
         document.body.appendChild(this.div);
     }
 
@@ -16,7 +16,7 @@ class Modal extends Component {
     }
 
     render() {
-        const { username, password, isShow, signIn, signUp, changeUserData } = this.props;
+        const { username, password, isShow, handleSignInUser, changeUserData } = this.props;
         return (
             <>
                 {isShow && ReactDOM.createPortal(
@@ -41,14 +41,12 @@ class Modal extends Component {
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" onClick={signUp} data-dismiss="modal">Регистрация</button>
-                                    <button type="button" className="btn btn-primary" onClick={signIn}>Вход</button>
+                                    <button type="button" className="btn btn-primary" onClick={handleSignInUser}>Вход</button>
                                 </div>
                             </div>
                         </div>
                     </div>, this.div
-                )
-                }
+                )}
             </>
         )
     }
