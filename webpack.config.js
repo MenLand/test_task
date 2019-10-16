@@ -21,7 +21,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                use: ['react-hot-loader/webpack', 'babel-loader']
+                use: ['babel-loader']
             },
             {
                 test: /\.scss$/,

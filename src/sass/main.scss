@@ -11,3 +11,11 @@
     text-align: center;
     cursor: pointer;
 }
+
+.modal {
+  background-color: #fff;
+}
+
+.modal.open {
+  display: block;
+}
