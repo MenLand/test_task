@@ -1,8 +1,8 @@
 Для входа используйте: 
 -------------------
-Login: Misha
+Login: Misha |
 Password: Drik
 -------------------
-Login: Max
+Login: Max |
 Password: Shut
 -------------------
